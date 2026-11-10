@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyWeb Studio — Thiết Kế Website Cao Cấp & Đột Phá Doanh Số</title>
+  <meta name="description" content="Dịch vụ thiết kế và lập trình website chuyên nghiệp, chuẩn UI/UX, tốc độ cực nhanh, chuẩn SEO, tối ưu chuyển đổi tối đa. Liên hệ ngay qua Facebook.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Syne"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#08090E',
+              card: '#10121A',
+              cardHover: '#161924',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderHover: 'rgba(99, 102, 241, 0.4)',
+              primary: '#6366F1',
+              primaryHover: '#4F46E5',
+              secondary: '#A855F7',
+              accent: '#10B981',
+              cyan: '#06B6D4',
+              muted: '#94A3B8',
+              glow: 'rgba(99, 102, 241, 0.15)',
+            }
+          },
+          animation: {
+            'gradient-x': 'gradient-x 8s ease infinite',
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            'pulse-glow': {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.9' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232738;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3B4260;
+    }
+    .glass-card {
+      background: rgba(16, 18, 26, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+    }
+    .glow-bg {
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.08) 35%, transparent 70%);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #FFFFFF 20%, #C7D2FE 60%, #818CF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-accent {
+      background: linear-gradient(135deg, #818CF8 0%, #C084FC 50%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#08090E] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-[#6366F1] selection:text-white relative">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] glow-bg pointer-events-none z-0"></div>
+  <div class="fixed top-1/3 -left-64 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none z-0 animate-pulse-glow"></div>
+  <div class="fixed top-2/3 -right-64 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none z-0 animate-pulse-glow"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="relative z-50 bg-gradient-to-r from-indigo-950/80 via-purple-950/80 to-indigo-950/80 border-b border-indigo-500/20 text-xs py-2 px-4 text-center">
+    <div class="flex items-center justify-center gap-2 flex-wrap text-slate-300">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+        Đang nhận dự án mới
+      </span>
+      <span>Ưu đãi tặng miễn phí Tên miền + Hosting NVMe năm đầu tiên cho 3 khách hàng đầu tuần này!</span>
+      <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-300 hover:text-white underline underline-offset-4 ml-1 inline-flex items-center gap-1">
+        Nhận ưu đãi qua Facebook <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-[#08090E]/80 backdrop-blur-xl border-b border-white/[0.06] transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform duration-200">
+          <i data-lucide="terminal" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
+            SKY<span class="text-indigo-400">STUDIO</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">High-Performance Web</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#services" class="hover:text-indigo-400 transition-colors">Dịch vụ</a>
+        <a href="#portfolio" class="hover:text-indigo-400 transition-colors">Dự án mẫu</a>
+        <a href="#workflow" class="hover:text-indigo-400 transition-colors">Quy trình</a>
+        <a href="#calculator" class="hover:text-indigo-400 transition-colors">Báo giá nhanh</a>
+        <a href="#guarantee" class="hover:text-indigo-400 transition-colors">Cam kết</a>
+        <a href="#faq" class="hover:text-indigo-400 transition-colors">Hỏi đáp</a>
+      </nav>
+
+      <!-- CTA Action Button -->
+      <div class="flex items-center gap-4">
+        <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+           class="relative group overflow-hidden px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/25 transition-all duration-200 flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4 fill-white/20"></i>
+          <span>Inbox Facebook</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-6 pt-24 pb-20 text-center relative">
+      
+      <!-- Tag Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card text-xs font-semibold text-indigo-300 mb-8 border border-indigo-500/30 shadow-inner">
+        <span class="flex h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span>Giải Pháp Website Chuyên Nghiệp • Độc Bản • Chuẩn SEO 2026</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.1] mb-8">
+        Xây dựng Website <span class="text-gradient-accent">Đẳng Cấp</span><br class="hidden sm:inline">
+        Tối Đa Hoá <span class="text-gradient">Chuyển Đổi Doanh Thu</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-normal mb-10">
+        Bạn cần một website <strong class="text-white font-semibold">siêu đẹp, tốc độ dưới 1s, chuẩn SEO</strong> và có tỷ lệ chốt đơn cao? Mình trực tiếp tư vấn, thiết kế và lập trình trọn gói — bàn giao nhanh chóng, hỗ trợ tận tâm trọn đời.
+      </p>
+
+      <!-- Primary CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
+        <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+           class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-base shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+          <i data-lucide="message-square" class="w-5 h-5"></i>
+          <span>Tư Vấn Miễn Phí Qua Facebook</span>
+        </a>
+        <a href="#portfolio"
+           class="w-full sm:w-auto px-7 py-4 rounded-2xl glass-card hover:bg-white/[0.06] text-slate-200 font-semibold text-base transition-all flex items-center justify-center gap-2">
+          <i data-lucide="eye" class="w-5 h-5 text-indigo-400"></i>
+          <span>Xem Kho Mẫu Đẹp</span>
+        </a>
+      </div>
+
+      <!-- Hero Social Proof Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="font-heading text-3xl font-extrabold text-white mb-1">50+</div>
+          <div class="text-xs text-slate-400 font-medium">Website Đã Bàn Giao</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="font-heading text-3xl font-extrabold text-emerald-400 mb-1">&lt; 1s</div>
+          <div class="text-xs text-slate-400 font-medium">Tốc Độ Tải Trang Siêu Tốc</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="font-heading text-3xl font-extrabold text-indigo-400 mb-1">100%</div>
+          <div class="text-xs text-slate-400 font-medium">Responsive Di Động & Tablet</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="font-heading text-3xl font-extrabold text-purple-400 mb-1">24/7</div>
+          <div class="text-xs text-slate-400 font-medium">Bảo Hành & Đồng Hành Trọn Đời</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TRUST LOGOS & TECH STACK MARQUEE -->
+    <section class="border-y border-white/[0.06] py-10 bg-black/20">
+      <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-xs uppercase tracking-widest text-slate-400 font-semibold mb-6">
+          Công nghệ hiện đại nhất giúp trang web đạt 99-100 điểm Google Speed
+        </p>
+        <div class="flex items-center justify-center flex-wrap gap-8 md:gap-14 text-slate-300 font-heading font-semibold text-sm">
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="zap" class="w-4 h-4 text-amber-400"></i> Next.js 15</span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="atom" class="w-4 h-4 text-cyan-400"></i> React 19</span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="wind" class="w-4 h-4 text-sky-400"></i> Tailwind CSS</span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i> shadcn/ui</span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="database" class="w-4 h-4 text-emerald-400"></i> PostgreSQL / Supabase</span>
+          <span class="flex items-center gap-2 hover:text-white transition-colors"><i data-lucide="shield-check" class="w-4 h-4 text-purple-400"></i> Chuẩn SEO Google</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION (BENTO GRID) -->
+    <section id="services" class="max-w-7xl mx-auto px-6 py-28">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Dịch Vụ Cung Cấp</div>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          Giải Pháp Cho Mọi Nhu Cầu Web
+        </h2>
+        <p class="text-slate-400 text-base">
+          Mỗi sản phẩm đều được thiết kế độc quyền, tối ưu hành vi người dùng (UI/UX) và lập trình tỉ mỉ để tăng tối đa đơn hàng cho bạn.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1: Landing Page -->
+        <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="target" class="w-7 h-7"></i>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] font-bold uppercase tracking-wider mb-3 inline-block">Best Seller</span>
+          <h3 class="font-heading font-bold text-2xl text-white mb-3">Landing Page Bán Hàng</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Trang bán hàng đơn trang với bố cục kích thích chốt đơn, form đăng ký nhanh, tích hợp gắn mã Facebook Pixel, TikTok Pixel và Google Analytics.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Bố cục A/B testing tối ưu tỷ lệ click</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Tải ngay lập tức, không làm mất khách</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Bàn giao trong 2 - 3 ngày</li>
+          </ul>
+          <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm font-semibold group-hover:underline">
+            Tư vấn mẫu Landing Page <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Card 2: Website Doanh Nghiệp -->
+        <div class="glass-card p-8 rounded-3xl relative overflow-hidden group border-indigo-500/30 shadow-lg shadow-indigo-950/40">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="building" class="w-7 h-7"></i>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[11px] font-bold uppercase tracking-wider mb-3 inline-block">Thương Hiệu</span>
+          <h3 class="font-heading font-bold text-2xl text-white mb-3">Website Doanh Nghiệp</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Website giới thiệu công ty, hồ sơ năng lực, dịch vụ chuyên nghiệp. Nâng tầm vị thế doanh nghiệp trước mắt đối tác và khách hàng lớn.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Giao diện sang trọng, chuẩn Brand Guideline</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Chuẩn SEO on-page lên Top từ khóa</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Trang quản trị dễ dùng, tự cập nhật tin tức</li>
+          </ul>
+          <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 text-sm font-semibold group-hover:underline">
+            Tư vấn Web Doanh Nghiệp <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Card 3: E-commerce & Web App -->
+        <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold uppercase tracking-wider mb-3 inline-block">Chuyên Sâu</span>
+          <h3 class="font-heading font-bold text-2xl text-white mb-3">E-Commerce & Web App</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Hệ thống bán hàng trực tuyến tích hợp thanh toán (VNPay, MoMo, Chuyển khoản QR tự động), quản lý kho hàng và ứng dụng web theo yêu cầu.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2.5 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Quét mã QR thanh toán tự động xác nhận</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Quản lý đơn hàng, thông báo qua Telegram/Zalo</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Bảo mật dữ liệu cấp doanh nghiệp</li>
+          </ul>
+          <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-semibold group-hover:underline">
+            Tư vấn E-commerce & App <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SHOWCASE SECTION -->
+    <section id="portfolio" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/[0.06]">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <div class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Dự Án Mẫu Nổi Bật</div>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white">
+            Các Phong Cách Thiết Kế Đỉnh Cao
+          </h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+          Mỗi dự án đều được chăm chút từng pixel, animation mượt 60fps và đạt chuẩn UX quốc tế.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="glass-card rounded-3xl overflow-hidden group">
+          <div class="h-64 sm:h-72 bg-gradient-to-br from-indigo-950 via-slate-900 to-black relative flex items-center justify-center p-8 overflow-hidden">
+            <div class="absolute inset-0 bg-indigo-600/10 group-hover:bg-indigo-600/20 transition-colors"></div>
+            <!-- Mockup preview elements -->
+            <div class="w-full max-w-sm rounded-xl bg-slate-900/90 border border-white/10 p-5 shadow-2xl transform group-hover:scale-105 group-hover:-translate-y-2 transition-all duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[10px] text-slate-500 font-mono ml-2">nova-fintech.io</span>
+              </div>
+              <div class="h-4 w-3/4 bg-indigo-500/40 rounded mb-2"></div>
+              <div class="h-2 w-1/2 bg-slate-700 rounded mb-4"></div>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="h-12 bg-white/[0.04] rounded-lg border border-white/5"></div>
+                <div class="h-12 bg-white/[0.04] rounded-lg border border-white/5"></div>
+                <div class="h-12 bg-white/[0.04] rounded-lg border border-white/5"></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-4 mb-3">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-400 border border-indigo-500/20">Fintech & SaaS</span>
+              <span class="text-xs text-slate-500 font-mono">Lighthouse: 100</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white mb-2">Nova Wealth Management</h3>
+            <p class="text-slate-400 text-sm mb-6">
+              Nền tảng tài chính công nghệ cao với phong cách Dark Mode sang trọng, biểu đồ tương tác thời gian thực và chuyển đổi cao.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span>Next.js</span> • <span>Tailwind</span> • <span>Framer</span>
+              </div>
+              <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+                 class="text-xs font-bold text-indigo-400 hover:text-white flex items-center gap-1.5">
+                Yêu cầu làm mẫu này <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card rounded-3xl overflow-hidden group">
+          <div class="h-64 sm:h-72 bg-gradient-to-br from-purple-950 via-slate-900 to-black relative flex items-center justify-center p-8 overflow-hidden">
+            <div class="absolute inset-0 bg-purple-600/10 group-hover:bg-purple-600/20 transition-colors"></div>
+            <!-- Mockup preview elements -->
+            <div class="w-full max-w-sm rounded-xl bg-slate-900/90 border border-white/10 p-5 shadow-2xl transform group-hover:scale-105 group-hover:-translate-y-2 transition-all duration-300">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <span class="text-[10px] text-slate-500 font-mono ml-2">aura-luxury.vn</span>
+              </div>
+              <div class="flex gap-3 mb-3">
+                <div class="w-16 h-16 rounded-lg bg-purple-500/20 border border-purple-500/30"></div>
+                <div class="flex-1">
+                  <div class="h-3 w-3/4 bg-purple-400/40 rounded mb-2"></div>
+                  <div class="h-2 w-1/2 bg-slate-700 rounded mb-2"></div>
+                  <div class="h-4 w-1/3 bg-emerald-500/40 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-4 mb-3">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-500/15 text-purple-400 border border-purple-500/20">E-Commerce Luxury</span>
+              <span class="text-xs text-slate-500 font-mono">Chốt đơn +42%</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white mb-2">Aura Fashion & Cosmetics</h3>
+            <p class="text-slate-400 text-sm mb-6">
+              Cửa hàng thời trang cao cấp với hiệu ứng lọc sản phẩm tức thì, giỏ hàng popup mượt mà và quét mã VietQR tự động.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span>React</span> • <span>VietQR</span> • <span>Supabase</span>
+              </div>
+              <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+                 class="text-xs font-bold text-purple-400 hover:text-white flex items-center gap-1.5">
+                Yêu cầu làm mẫu này <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- More Projects Banner -->
+      <div class="mt-12 p-8 rounded-3xl bg-gradient-to-r from-indigo-950/60 to-purple-950/60 border border-indigo-500/20 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div>
+          <h4 class="font-heading font-bold text-xl text-white mb-1">Bạn có mẫu thiết kế riêng hoặc muốn tham khảo thêm?</h4>
+          <p class="text-slate-400 text-sm">Gửi link trang bạn thích hoặc file Figma, mình có thể clone hoặc tùy biến chính xác 100%.</p>
+        </div>
+        <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+           class="px-6 py-3.5 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-sm shrink-0 flex items-center gap-2 shadow-lg">
+          <i data-lucide="send" class="w-4 h-4 text-indigo-600"></i>
+          Gửi Mẫu Cho Mình Qua FB
+        </a>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PRICING CALCULATOR -->
+    <section id="calculator" class="max-w-5xl mx-auto px-6 py-24">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border-indigo-500/25 relative overflow-hidden">
+        <div class="absolute -top-32 -right-32 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2 inline-block">Ước Tính Nhanh</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mb-3">Bảng Tính Chi Phí Trực Quan</h2>
+          <p class="text-slate-400 text-sm">Chọn loại website và các tiện ích mở rộng để nhận dự toán chi phí minh bạch nhất.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Selections (Left 2 cols) -->
+          <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Type Selector -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">1. Loại hình website cần làm:</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="type-selector">
+                <button type="button" data-price="2500000" data-name="Landing Page Bán Hàng" class="calc-type-btn p-4 rounded-xl border border-indigo-500 bg-indigo-500/20 text-white text-left transition-all">
+                  <div class="font-bold text-sm">Landing Page</div>
+                  <div class="text-xs text-indigo-300 mt-1">Từ 2.500.000đ</div>
+                </button>
+                <button type="button" data-price="4500000" data-name="Website Doanh Nghiệp" class="calc-type-btn p-4 rounded-xl border border-white/10 bg-white/[0.02] text-slate-300 hover:border-white/20 text-left transition-all">
+                  <div class="font-bold text-sm">Web Công Ty</div>
+                  <div class="text-xs text-slate-400 mt-1">Từ 4.500.000đ</div>
+                </button>
+                <button type="button" data-price="7500000" data-name="Cửa Hàng / Web App" class="calc-type-btn p-4 rounded-xl border border-white/10 bg-white/[0.02] text-slate-300 hover:border-white/20 text-left transition-all">
+                  <div class="font-bold text-sm">Bán Hàng / App</div>
+                  <div class="text-xs text-slate-400 mt-1">Từ 7.500.000đ</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Features Checkboxes -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">2. Tính năng bổ sung (Tùy chọn):</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <input type="checkbox" class="calc-addon rounded text-indigo-600 focus:ring-0 bg-slate-800 border-slate-700" data-price="800000" data-name="Tự động thanh toán QR">
+                  <span class="text-xs text-slate-200">Thanh toán Quét mã QR tự động (+800k)</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <input type="checkbox" class="calc-addon rounded text-indigo-600 focus:ring-0 bg-slate-800 border-slate-700" data-price="500000" data-name="Tối ưu SEO Top 1 Google">
+                  <span class="text-xs text-slate-200">Gói SEO On-page Chuyên Sâu (+500k)</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <input type="checkbox" class="calc-addon rounded text-indigo-600 focus:ring-0 bg-slate-800 border-slate-700" data-price="600000" data-name="Đa ngôn ngữ Anh - Việt">
+                  <span class="text-xs text-slate-200">Hỗ trợ Song ngữ Anh - Việt (+600k)</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] cursor-pointer transition-colors">
+                  <input type="checkbox" class="calc-addon rounded text-indigo-600 focus:ring-0 bg-slate-800 border-slate-700" data-price="500000" data-name="Thông báo đơn qua Telegram">
+                  <span class="text-xs text-slate-200">Bot thông báo đơn qua Telegram (+500k)</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Summary Box (Right col) -->
+          <div class="rounded-2xl bg-gradient-to-b from-indigo-950/80 to-slate-900 border border-indigo-500/30 p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-indigo-300 font-semibold mb-2">Dự toán chi phí</div>
+              <div class="font-heading text-4xl font-extrabold text-white mb-1" id="total-price-display">2.500.000đ</div>
+              <div class="text-xs text-slate-400 mb-6">Trọn gói không phát sinh • Tặng tên miền + hosting</div>
+
+              <div class="space-y-2 text-xs text-slate-300 border-t border-white/10 pt-4 mb-6" id="summary-items">
+                <div class="flex justify-between font-medium">
+                  <span id="selected-type-text">Landing Page Bán Hàng</span>
+                  <span>Cơ bản</span>
+                </div>
+              </div>
+            </div>
+
+            <a id="btn-inbox-calc" href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+               class="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm text-center shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Chốt Báo Giá Qua Facebook</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW (4 STEPS) -->
+    <section id="workflow" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/[0.06]">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Quy Trình Làm Việc</div>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          Minh Bạch, Nhanh Chóng & Chuẩn Chỉ
+        </h2>
+        <p class="text-slate-400 text-base">Từ lúc nhắn tin đến khi web chạy chính thức chỉ mất từ 3 đến 7 ngày.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 font-heading font-extrabold flex items-center justify-center mb-4">01</div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Tiếp Nhận & Tư Vấn</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Bạn nhắn tin qua FB, trao đổi về nhu cầu, ngành hàng, phong cách yêu thích và nhận báo giá chi tiết trong 15 phút.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 font-heading font-extrabold flex items-center justify-center mb-4">02</div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Thiết Kế UI/UX Bản Mẫu</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Lên bản phác thảo giao diện độc quyền cho bạn xem trước, chỉnh sửa thoải mái đến khi bạn ưng ý 100%.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 font-heading font-extrabold flex items-center justify-center mb-4">03</div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Lập Trình & Tối Ưu</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Code chuẩn công nghệ cao (Next.js/React/Tailwind), tối ưu tốc độ đạt điểm xanh Google, gắn mã đo lường chuyển đổi.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card p-6 rounded-2xl relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-heading font-extrabold flex items-center justify-center mb-4">04</div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Bàn Giao & Bảo Hành</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Trỏ tên miền chính thức, bàn giao toàn bộ mã nguồn + tài khoản quản trị và bảo hành kỹ thuật trọn đời.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEE / COMMITMENTS -->
+    <section id="guarantee" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/[0.06]">
+      <div class="p-8 sm:p-14 rounded-3xl bg-gradient-to-br from-indigo-950/40 via-purple-950/30 to-black border border-indigo-500/30">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div>
+            <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3 inline-block">Cam Kết Vàng</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mb-6">
+              Bạn Luôn Được Đảm Bảo Quyền Lợi Tối Cao
+            </h2>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="check-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Không hài lòng hoàn tiền 100%</h4>
+                  <p class="text-slate-400 text-xs mt-0.5">Nếu bản thiết kế demo không làm bạn ưng ý, mình cam kết hoàn lại tiền cọc.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Bàn giao 100% mã nguồn</h4>
+                  <p class="text-slate-400 text-xs mt-0.5">Bạn nắm giữ toàn quyền sở hữu tên miền, hosting và mã nguồn, không bị giữ chân.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="headphones" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Hỗ trợ kỹ thuật trọn đời</h4>
+                  <p class="text-slate-400 text-xs mt-0.5">Bất cứ khi nào web gặp lỗi hoặc cần hỗ trợ thêm thông tin, mình luôn sẵn sàng 24/7.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl text-center border-indigo-500/40 relative">
+            <div class="w-20 h-20 rounded-full bg-indigo-600/20 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-6">
+              <i data-lucide="award" class="w-10 h-10 text-indigo-400"></i>
+            </div>
+            <h3 class="font-heading font-extrabold text-2xl text-white mb-2">Sẵn Sàng Bứt Phá?</h3>
+            <p class="text-slate-300 text-sm mb-6 max-w-sm mx-auto">
+              Đừng để khách hàng rơi vào tay đối thủ vì một website cũ kỹ hoặc tải chậm. Inbox ngay để nhận demo miễn phí!
+            </p>
+            <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white font-bold text-base shadow-lg shadow-indigo-500/30 hover:scale-105 transition-all">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              <span>Nhắn Tin Trực Tiếp Với Tôi</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="max-w-4xl mx-auto px-6 py-24">
+      <div class="text-center mb-12">
+        <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2 inline-block">Thắc Mắc Phổ Biến</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mb-3">Câu Hỏi Thường Gặp</h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <details class="glass-card p-5 rounded-2xl group cursor-pointer" open>
+          <summary class="font-bold text-sm text-white flex items-center justify-between list-none">
+            <span>1. Tôi chưa có kinh nghiệm quản lý web, sau khi bàn giao có tự sửa nội dung được không?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/5 pt-3">
+            Hoàn toàn được! Mình sẽ quay video hướng dẫn chi tiết cách thay đổi chữ, hình ảnh, giá bán và sản phẩm. Trang quản trị cực kỳ trực quan, chỉ cần biết dùng máy tính cơ bản là sửa được ngay.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 rounded-2xl group cursor-pointer">
+          <summary class="font-bold text-sm text-white flex items-center justify-between list-none">
+            <span>2. Thời gian hoàn thành một website là bao lâu?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/5 pt-3">
+            Đối với Landing Page thông thường: từ 2 đến 3 ngày. Với Website công ty hoặc bán hàng E-commerce: từ 4 đến 7 ngày làm việc tùy thuộc vào khối lượng nội dung.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 rounded-2xl group cursor-pointer">
+          <summary class="font-bold text-sm text-white flex items-center justify-between list-none">
+            <span>3. Sau khi làm xong có phát sinh chi phí hàng tháng không?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/5 pt-3">
+            Không phát sinh chi phí hàng tháng! Chi phí đã bao gồm toàn bộ thiết kế, lập trình, tên miền và hosting tốc độ cao cho năm đầu tiên. Từ năm thứ 2 bạn chỉ cần duy trì tên miền theo biểu giá nhà nước.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 rounded-2xl group cursor-pointer">
+          <summary class="font-bold text-sm text-white flex items-center justify-between list-none">
+            <span>4. Tôi muốn bắt đầu thì cần chuẩn bị những gì?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/5 pt-3">
+            Rất đơn giản, bạn chỉ cần bấm vào nút "Inbox Facebook" bên dưới và chia sẻ ngắn gọn: Bạn đang bán gì hoặc làm ngành nghề nào? Mình sẽ tư vấn cấu trúc và chọn mẫu phù hợp nhất ngay lập tức!
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/[0.08] bg-[#05060A] py-14 relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <div class="md:col-span-2">
+          <div class="font-heading font-extrabold text-2xl text-white mb-3 flex items-center gap-2">
+            SKY<span class="text-indigo-400">STUDIO</span>
+          </div>
+          <p class="text-slate-400 text-sm max-w-sm mb-6 leading-relaxed">
+            Dịch vụ thiết kế và lập trình website cao cấp, tối ưu chuyển đổi, tốc độ tải trang cực nhanh và bảo hành trọn đời.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+               class="w-10 h-10 rounded-xl bg-white/[0.05] hover:bg-indigo-600 text-white flex items-center justify-center transition-colors">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+               class="w-10 h-10 rounded-xl bg-white/[0.05] hover:bg-indigo-600 text-white flex items-center justify-center transition-colors">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+            <a href="https://github.com/robloxhihi" target="_blank" rel="noopener noreferrer"
+               class="w-10 h-10 rounded-xl bg-white/[0.05] hover:bg-slate-800 text-white flex items-center justify-center transition-colors">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-sm mb-4">Dịch Vụ</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#services" class="hover:text-white transition-colors">Thiết Kế Landing Page</a></li>
+            <li><a href="#services" class="hover:text-white transition-colors">Website Doanh Nghiệp</a></li>
+            <li><a href="#services" class="hover:text-white transition-colors">Web Bán Hàng E-Commerce</a></li>
+            <li><a href="#services" class="hover:text-white transition-colors">Tối Ưu Tốc Độ & SEO</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white text-sm mb-4">Liên Hệ Trực Tiếp</h4>
+          <p class="text-xs text-slate-400 mb-2">Facebook cá nhân:</p>
+          <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+             class="text-indigo-400 hover:text-indigo-300 text-xs font-semibold break-all inline-block mb-4">
+            facebook.com/sky.real.2025
+          </a>
+          <div class="text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Phản hồi nhanh trong vòng 5 - 15 phút
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 Sky Studio. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <span>Chuẩn WCAG 2.1 AA</span>
+          <span>•</span>
+          <span>Tối Ưu PageSpeed 99+</span>
+          <span>•</span>
+          <span>Bảo Mật SSL</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING MESSENGER CTA BUTTON (GÓC PHẢI DƯỚI) -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <!-- Tooltip Bubble -->
+    <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+       class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-indigo-500/30 text-xs font-semibold text-white shadow-2xl hover:border-indigo-400 transition-all">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span>Cần làm web? Nhắn tin ngay!</span>
+    </a>
+
+    <!-- Main Floating Icon -->
+    <a href="https://www.facebook.com/sky.real.2025" target="_blank" rel="noopener noreferrer"
+       class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 hover:scale-110 active:scale-95 text-white flex items-center justify-center shadow-2xl shadow-indigo-600/50 border border-white/20 transition-all duration-200 group">
+      <i data-lucide="message-circle" class="w-7 h-7 group-hover:rotate-12 transition-transform"></i>
+    </a>
+  </div>
+
+  <!-- SOCIAL PROOF TOAST POPUP (Hiệu ứng có khách nhắn tin) -->
+  <div id="live-toast" class="fixed bottom-6 left-6 z-50 max-w-sm rounded-2xl glass-card border border-indigo-500/30 p-3.5 shadow-2xl flex items-center gap-3.5 transform translate-y-32 opacity-0 transition-all duration-500">
+    <div class="w-9 h-9 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center shrink-0 font-bold text-xs">
+      ⚡
+    </div>
+    <div class="flex-1 text-xs">
+      <p class="font-bold text-white" id="toast-text">Anh Nam (Hà Nội) vừa inbox tư vấn Landing Page</p>
+      <p class="text-[10px] text-slate-400 mt-0.5">Khoảng 3 phút trước</p>
+    </div>
+    <button onclick="document.getElementById('live-toast').classList.add('translate-y-32', 'opacity-0')" class="text-slate-500 hover:text-white p-1">
+      <i data-lucide="x" class="w-3.5 h-3.5"></i>
+    </button>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Interactive Pricing Calculator
+    const typeButtons = document.querySelectorAll('.calc-type-btn');
+    const addonCheckboxes = document.querySelectorAll('.calc-addon');
+    const totalPriceDisplay = document.getElementById('total-price-display');
+    const selectedTypeText = document.getElementById('selected-type-text');
+    const btnInboxCalc = document.getElementById('btn-inbox-calc');
+
+    let currentBasePrice = 2500000;
+    let currentTypeName = 'Landing Page Bán Hàng';
+
+    function formatVND(amount) {
+      return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
+    }
+
+    function calculateTotal() {
+      let total = currentBasePrice;
+      let selectedAddons = [];
+      
+      addonCheckboxes.forEach(cb => {
+        if (cb.checked) {
+          total += parseInt(cb.dataset.price);
+          selectedAddons.push(cb.dataset.name);
+        }
+      });
+
+      totalPriceDisplay.textContent = formatVND(total);
+      selectedTypeText.textContent = currentTypeName;
+
+      // Update Facebook link with custom message context
+      const addonsStr = selectedAddons.length > 0 ? ' + Tiện ích: ' + selectedAddons.join(', ') : '';
+      const message = encodeURIComponent(`Chào bạn, mình cần tư vấn gói [${currentTypeName}${addonsStr}] dự toán khoảng ${formatVND(total)}`);
+      btnInboxCalc.href = `https://www.facebook.com/sky.real.2025`;
+    }
+
+    typeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeButtons.forEach(b => {
+          b.classList.remove('border-indigo-500', 'bg-indigo-500/20', 'text-white');
+          b.classList.add('border-white/10', 'bg-white/[0.02]', 'text-slate-300');
+        });
+        btn.classList.remove('border-white/10', 'bg-white/[0.02]', 'text-slate-300');
+        btn.classList.add('border-indigo-500', 'bg-indigo-500/20', 'text-white');
+
+        currentBasePrice = parseInt(btn.dataset.price);
+        currentTypeName = btn.dataset.name;
+        calculateTotal();
+      });
+    });
+
+    addonCheckboxes.forEach(cb => {
+      cb.addEventListener('change', calculateTotal);
+    });
+
+    // Social Proof Toast Notification Cycle
+    const toastData = [
+      "Chị Hương (TP.HCM) vừa inbox báo giá Website Bán Hàng",
+      "Anh Tuấn (Đà Nẵng) vừa đặt thiết kế Landing Page Bất Động Sản",
+      "Shop Thời Trang K* vừa nghiệm thu bàn giao website",
+      "Anh Minh (Hà Nội) vừa đăng ký gói Tối ưu SEO Top 1"
+    ];
+    let toastIndex = 0;
+
+    function showToast() {
+      const toast = document.getElementById('live-toast');
+      const toastText = document.getElementById('toast-text');
+      if (!toast) return;
+
+      toastText.textContent = toastData[toastIndex];
+      toastIndex = (toastIndex + 1) % toastData.length;
+
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-y-32', 'opacity-0');
+      }, 5000);
+    }
+
+    // Trigger toast after 3 seconds, then every 20 seconds
+    setTimeout(showToast, 3000);
+    setInterval(showToast, 22000);
+  </script>
+</body>
+</html>
